@@ -1,21 +1,21 @@
-name: 'The name of your action here'
-description: 'Provide a description here'
+name: 'Formal Spec Generator'
+description:
+  'Generates formal specifications for a project using the GPT API and Halmos.'
 author: 'Your name or organization here'
 
-# Define your inputs here.
 inputs:
-  milliseconds:
-    description: 'Your input description here'
+  summary:
+    description: 'Summary of the repository'
     required: true
-    default: '1000'
+  demo_mode:
+    description: 'Run in demo mode with hardcoded values'
+    required: false
+    default: 'false'
 
-# Define your outputs here.
 outputs:
-  time:
-    description: 'Your output description here'
+  file_path:
+    description: 'Path of the created or modified file'
 
 runs:
   using: docker
   image: Dockerfile
-  env:
-    INPUT_MILLISECONDS: ${{ inputs.milliseconds }}

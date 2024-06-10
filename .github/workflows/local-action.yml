@@ -1,0 +1,38 @@
+name: Formal Spec Generator Demo
+
+# This workflow will only run when manually triggered
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate-specs:
+    name: Generate Formal Specs
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run Formal Spec Generator in Demo Mode
+        id: generate-formal-specs
+        uses: ./
+        with:
+          summary: |
+            {
+              "current": [],
+              "proposed": [
+                "Checking increment method if that works as expected by increasing the value of the number by 1.",
+                "Checking the setNumber method if it works as expected by setting the symbolic value as expected."
+              ]
+            }
+          demo_mode: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+
+      - name: Print Output
+        run:
+          'echo "File Path: ${{ steps.generate-formal-specs.outputs.file_path }}"'
