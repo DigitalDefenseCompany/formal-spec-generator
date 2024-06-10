@@ -1,7 +1,7 @@
 name: 'Formal Spec Generator'
 description:
   'Generates formal specifications for a project using the GPT API and Halmos.'
-author: 'Your name or organization here'
+author: 'The Digital Defense Company'
 
 inputs:
   summary:
