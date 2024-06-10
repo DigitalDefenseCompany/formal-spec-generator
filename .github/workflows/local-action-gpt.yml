@@ -33,6 +33,19 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
+      - name: Configure Git
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+      - name: Commit and Push Changes
+        run: |
+          git add test/Halmos.t.sol
+          git commit -m 'Add generated formal specs'
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Print Output
         run:
           'echo "File Path: ${{ steps.generate-formal-specs.outputs.file_path }}"'
