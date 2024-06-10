@@ -1,4 +1,4 @@
-name: Formal Spec Generator Demo
+name: Formal Spec Generator Demo GPT
 
 # This workflow will only run when manually triggered
 on:
@@ -16,7 +16,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Run Formal Spec Generator in Demo Mode
+      - name: Run Formal Spec Generator in GPT Mode
         id: generate-formal-specs
         uses: ./
         with:
